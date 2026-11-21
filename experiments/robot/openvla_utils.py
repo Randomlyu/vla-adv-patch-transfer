@@ -18,7 +18,10 @@ from prismatic.extern.hf.processing_prismatic import PrismaticImageProcessor, Pr
 ACTION_DIM = 7
 DATE = time.strftime("%Y_%m_%d")
 DATE_TIME = time.strftime("%Y_%m_%d-%H_%M_%S")
-DEVICE = torch.device("cuda:1") if torch.cuda.is_available() else torch.device("cpu")
+# Device selection is driven by CUDA_VISIBLE_DEVICES (see README); inside the process the
+# only visible GPU is always index 0. A hard-coded "cuda:1" raises "invalid device ordinal"
+# on single-GPU hosts.
+DEVICE = torch.device("cuda:0") if torch.cuda.is_available() else torch.device("cpu")
 np.set_printoptions(formatter={"float": lambda x: "{0:0.3f}".format(x)})
 
 # Initialize system prompt for OpenVLA v0.1.

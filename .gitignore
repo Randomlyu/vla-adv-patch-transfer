@@ -151,3 +151,30 @@ data/
 # Rollout videos and wandb logs
 rollouts/
 wandb/
+
+# ---------------------------------------------------------------------------
+# P0: generated run artifacts (never commit)
+# ---------------------------------------------------------------------------
+runs/
+logs/
+checkpoints/
+rollouts/
+wandb/
+*.log
+
+# Hugging Face / PyTorch weight blobs. Weights stay on the AutoDL data disk
+# (/root/autodl-tmp/checkpoints) and never enter git.
+*.safetensors
+*.bin
+*.pth
+
+# LIBERO / RLDS datasets are not part of this repo
+dataset/
+
+# ---------------------------------------------------------------------------
+# P0: adversarial patches ARE required inputs (52 files, ~1.1 MB) -- keep them.
+# Note: *.pt is deliberately NOT ignored, because every patch is a patch.pt.
+# The negations below are a guard against a broader rule being added later.
+# ---------------------------------------------------------------------------
+!adversarial_patches/
+!adversarial_patches/**

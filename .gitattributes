@@ -1,0 +1,12 @@
+# Shell scripts must be LF so they run unchanged inside Linux containers.
+*.sh text eol=lf
+
+# Binary assets: never normalize, never try to diff.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.mp4 binary
+*.pt binary
+*.hdf5 binary
+*.safetensors binary
+*.bin binary
