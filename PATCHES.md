@@ -166,7 +166,7 @@ parser.add_argument("--clean", action="store_true", help="Force a clean run; ign
 parser.add_argument("--patchroot", type=str, default=None, help="Deprecated alias of --patch_path")
 ```
 
-解析与加载（新 `:131-152`, `:160`）：
+解析与加载（新 `:79-107`, `:160`）：
 
 ```python
 def _resolve_patch_path(raw):
@@ -255,7 +255,7 @@ if invalid_episodes:
 
 ### P-08 W&B 默认开启 + `type=bool`（必须改，只保留一套机制）
 
-**文件**：同文件 `:139-144` 与 `:328`（新 `:220-222` 与 `:544`）
+**文件**：同文件 `:139-144` 与 `:328`（新 `:223` 与 `:544`）
 
 改前：
 
