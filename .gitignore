@@ -172,9 +172,35 @@ wandb/
 dataset/
 
 # ---------------------------------------------------------------------------
+# P0: secrets / local environment -- public repo, never commit
+# ---------------------------------------------------------------------------
+.env
+*.env
+*secret*
+*api_key*
+*apikey*
+*password*
+*passwd*
+*.key
+*.pem
+*.p12
+*.pfx
+id_rsa*
+id_ed25519*
+
+# GitHub / Hugging Face access tokens.
+# Caution: *token* also matches prismatic/vla/action_tokenizer.py, a tracked source file.
+# That file is re-included at the end of this section so a future re-add cannot drop it.
+*token*
+
+# Assistant / editor workspace (local memory, caches)
+.workbuddy/
+
+# ---------------------------------------------------------------------------
 # P0: adversarial patches ARE required inputs (52 files, ~1.1 MB) -- keep them.
 # Note: *.pt is deliberately NOT ignored, because every patch is a patch.pt.
 # The negations below are a guard against a broader rule being added later.
 # ---------------------------------------------------------------------------
 !adversarial_patches/
 !adversarial_patches/**
+!prismatic/vla/action_tokenizer.py
