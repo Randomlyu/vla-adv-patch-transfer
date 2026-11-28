@@ -362,6 +362,20 @@ def eval_libero(cfg) -> None:
             # Save a replay video of the episode
             video_path = None
             if replay_images:
+                # Append the frame from the final env.step() so the video ends on the terminal state
+                img = get_libero_image(obs, resize_size)
+                if patch is not None:
+                    img = randomPatchTransform.simulation_random_patch(
+                        img,
+                        patch,
+                        geometry=True,
+                        colorjitter=False,
+                        angle=cfg.angle,
+                        shx=cfg.shx,
+                        shy=cfg.shy,
+                        position=(cfg.x, cfg.y),
+                    )
+                replay_images.append(img)
                 print("Saving replay video...")
                 video_path = save_rollout_video(
                     replay_images,
